@@ -49,6 +49,7 @@ spec:
           sh """
             ln -s `pwd` /go/src/sample-app
 	    ls -al /go/src/sample-app
+	    ls -al .
             cd /go/src/sample-app
             go test
           """
