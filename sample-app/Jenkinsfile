@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
+    PROJECT = "test"
     APP_NAME = "gceme"
     FE_SVC_NAME = "${APP_NAME}-frontend"
     CLUSTER = "jenkins-cd"
@@ -25,7 +25,7 @@ spec:
   serviceAccountName: exhaling-quail-jenkins
   containers:
   - name: golang
-    image: golang:1.10
+    image: golang:latest
     command:
     - cat
     tty: true
@@ -48,6 +48,7 @@ spec:
         container('golang') {
           sh """
             ln -s `pwd` /go/src/sample-app
+	    ls -al /go/src/sample-app
             cd /go/src/sample-app
             go test
           """
